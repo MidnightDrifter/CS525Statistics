@@ -5,7 +5,7 @@ public:
 	Size();
 	~Size();
 
-	int getSize const;
+	int getSize() const;
 	void operator() ();
 
 private:

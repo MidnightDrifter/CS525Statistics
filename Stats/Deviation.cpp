@@ -1,9 +1,26 @@
 #include "Deviation.h"
+/*
+Deviation() - standard deviation is a measure of how much the data is
+dispersed from the average.
+formula Deviation( x_1, ... , x_n ) = sqrt ( 1/n * sum ( x_i -a )^2 )
+Where 'a' is the Average.
+Basically deviation is an average of the squares of the distances to the average.
+
+*/
 
 
-
-Deviation::Deviation()
+Deviation::Deviation() : avg(), sumSquares(0.f)
 {
+}
+
+void Deviation::operator() (int x)
+{
+	sumSquares += powf(x - avg.getAverage(),2);
+}
+
+float Deviation::getDev() const
+{
+	return sqrtf((1.f / avg.getSize()) * sumSquares);
 }
 
 

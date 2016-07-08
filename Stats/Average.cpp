@@ -12,6 +12,16 @@ float Average::getAverage() const
 	return sum / size;
 }
 
+float Average::getSum() const
+{
+	return sum;
+}
+
+int Average::getSize() const
+{
+	return size;
+}
+
 void Average::operator() (const int x)
 {
 	sum += x;

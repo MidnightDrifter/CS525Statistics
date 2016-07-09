@@ -7,6 +7,9 @@ OccuresMoreThan::OccuresMoreThan()
 {
 }
 
+
+OccuresMoreThan::OccuresMoreThan(const OccuresMoreThan& c) : mult(c.mult), map() { map.insert(c.map.begin(), c.map.end()); }
+
 bool OccuresMoreThan::isLargerThanMultiplicity(int x) const
 {
 	return x > mult;

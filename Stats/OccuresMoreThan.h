@@ -5,6 +5,7 @@ class OccuresMoreThan
 {
 public:
 	OccuresMoreThan();
+	OccuresMoreThan(const OccuresMoreThan& o);
 	~OccuresMoreThan();
 
 	void operator() (int x);

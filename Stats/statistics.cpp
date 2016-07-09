@@ -5,7 +5,7 @@
 #include <iomanip> //setfill setw
 #include <iostream> //cout
 
-Statistics::Statistics() : data() {}
+Statistics::Statistics() : data(), avg(), size(), omt(), max(), min(), dev(), hist(), removeIf() {}
 
 std::ostream& operator<<( std::ostream& out, Statistics const& stat ) {
     std::copy( stat.data.begin(),  stat.data.end(),
@@ -18,5 +18,57 @@ std::istream& operator>>( std::istream& in, Statistics & stat ) {
                std::istream_iterator<int>(),
                std::back_inserter( stat.data ) );
     return in; 
+}
+
+
+
+float Statistics::Average()
+{
+	return std::for_each(data.begin(), data.end(), avg).getAverage();
+}
+
+float Statistics::Deviation()
+{
+
+}
+
+int Statistics::Maximum()
+{
+
+}
+
+int Statistics::Minimum()
+{
+
+}
+
+int Statistics::Size()
+{
+	//return data.size();
+	//class Size o = std::for_each(data.begin, data.end, size);
+	
+	return std::for_each(data.begin(), data.end(), size).getSize();
+	
+	//return o.getSize();
+}
+
+void Statistics::RemoveIf()
+{
+
+}
+
+std::map<int, int> Statistics::OccuresMoreThan(int multiplicity)
+{
+
+	omt.setMultiplicity(multiplicity);
+	//class OccuresMoreThan;// o = OccuresMoreThan::OccuresMoreThan();
+	class OccuresMoreThan o = std::for_each(data.begin(), data.end(), omt);
+	o.trimMap();
+	return omt.getMap();
+}
+
+std::vector<int> Statistics::Histogram(int numBins, int upper, int lower)
+{
+
 }
 

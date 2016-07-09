@@ -13,6 +13,8 @@ Deviation::Deviation() : avg(), sumSquares(0.f)
 {
 }
 
+Deviation::Deviation(const Deviation& d) : avg(d.avg), sumSquares(d.sumSquares) {}
+
 void Deviation::operator() (int x)
 {
 	sumSquares += powf(x - avg.getAverage(),2);

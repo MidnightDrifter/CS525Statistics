@@ -2,7 +2,7 @@
 
 
 
-Average::Average() : sum(0), size(-1.f)
+Average::Average() : sum(0.f), size(0)
 {
 }
 
@@ -25,6 +25,7 @@ int Average::getSize() const
 void Average::operator() (const int x)
 {
 	sum += x;
+	++size;
 }
 
 Average::~Average()

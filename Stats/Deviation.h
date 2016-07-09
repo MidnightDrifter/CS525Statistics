@@ -14,6 +14,7 @@ class Deviation
 	*/
 public:
 	Deviation();
+	Deviation(const Deviation& d);
 	~Deviation();
 
 	void operator() (int x);

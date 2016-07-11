@@ -13,6 +13,21 @@ Deviation::Deviation() : avg(), sumSquares(0.f)
 {
 }
 
+void Deviation::setAverage(Average a)
+{
+	avg = a;
+}
+
+const Deviation& Deviation::operator=(const Deviation& d)
+{
+	if (this != &d)
+	{
+		this->avg = d.avg;
+		this->sumSquares = d.sumSquares;
+	}
+	return *this;
+}
+
 Deviation::Deviation(const Deviation& d) : avg(d.avg), sumSquares(d.sumSquares) {}
 
 void Deviation::operator() (int x)

@@ -39,7 +39,11 @@ class Statistics {
 		int Minimum();
 		int Size();
 		float Deviation();
-		void RemoveIf();
+
+		template <typename Pred>
+		void RemoveIf(Pred p);
+		
+		
 		std::map<int, int> OccuresMoreThan(int multiplicity);
 		std::vector<int> Histogram(int numBins, int lower, int upper);
 

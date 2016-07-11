@@ -15,6 +15,8 @@ class Deviation
 public:
 	Deviation();
 	Deviation(const Deviation& d);
+	const Deviation& operator=(const Deviation& d);
+	void setAverage(Average a);
 	~Deviation();
 
 	void operator() (int x);

@@ -29,17 +29,20 @@ float Statistics::Average()
 
 float Statistics::Deviation()
 {
-
+	
+	dev.setAverage(std::for_each(data.begin(), data.end(), avg));
+	//dev = std::for_each(data.begin(), data.end(), dev);
+	return std::for_each(data.begin(), data.end(), dev).getDev();
 }
 
 int Statistics::Maximum()
 {
-
+	return std::for_each(data.begin(), data.end(), max).getMax();
 }
 
 int Statistics::Minimum()
 {
-
+	return std::for_each(data.begin(), data.end(), min).getMin();
 }
 
 int Statistics::Size()
@@ -51,10 +54,10 @@ int Statistics::Size()
 	
 	//return o.getSize();
 }
-
-void Statistics::RemoveIf()
+template <typename Pred>
+void Statistics::RemoveIf(Pred p)
 {
-
+	data.erase(std::remove_if(data.begin(), data.end(), p), data.end());
 }
 
 std::map<int, int> Statistics::OccuresMoreThan(int multiplicity)

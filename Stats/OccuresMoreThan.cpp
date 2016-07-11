@@ -10,12 +10,6 @@ OccuresMoreThan::OccuresMoreThan()
 
 OccuresMoreThan::OccuresMoreThan(const OccuresMoreThan& c) : mult(c.mult), map() { map.insert(c.map.begin(), c.map.end()); }
 
-bool OccuresMoreThan::isLargerThanMultiplicity(int x) const
-{
-	return x > mult;
-}
-
-
 void OccuresMoreThan::operator() (int x)
 {
 	std::map<int, int>::iterator it = map.find(x);
@@ -33,7 +27,17 @@ void OccuresMoreThan::operator() (int x)
 }
 
 void OccuresMoreThan::setMultiplicity(int x) { mult = x; }
-void OccuresMoreThan::trimMap() { std::remove_if(map.begin(), map.end(), !isLargerThanMultiplicity); }
+
+void OccuresMoreThan::trimMap()
+{
+	for (std::map<int, int>::iterator it = map.begin(); it != map.end(); it++)
+	{
+		if ((*it).second < mult) {
+			map.erase(it);
+		}
+
+	}
+}
 std::map<int, int> OccuresMoreThan::getMap() const { return map; }
 
 

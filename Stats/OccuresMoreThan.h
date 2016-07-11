@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <algorithm>
+#include <functional>
 class OccuresMoreThan
 {
 public:

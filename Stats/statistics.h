@@ -48,8 +48,8 @@ class Statistics {
 		std::vector<int> Histogram(int numBins, int lower, int upper);
 
 		//Extra credit
-		void DrawHistogramH() {}
-		void DrawHistogramV() {}
+		void DrawHistogramH(int a, int b, int c) {}
+		void DrawHistogramV(int a, int b, int c) {}
 
 };
 

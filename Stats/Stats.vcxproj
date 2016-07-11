@@ -126,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Average.cpp" />
+    <ClCompile Include="Between.cpp" />
     <ClCompile Include="Deviation.cpp" />
     <ClCompile Include="driver.cpp" />
     <ClCompile Include="Histogram.cpp" />
@@ -134,7 +135,6 @@
     <ClCompile Include="OccuresMoreThan.cpp" />
     <ClCompile Include="RemoveIf.cpp" />
     <ClCompile Include="Size.cpp" />
-    <ClCompile Include="statistics-skeleton.cpp" />
     <ClCompile Include="statistics.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Average.h" />
+    <ClInclude Include="Between.h" />
     <ClInclude Include="Deviation.h" />
     <ClInclude Include="Histogram.h" />
     <ClInclude Include="Maximum.h" />
@@ -149,7 +150,6 @@
     <ClInclude Include="OccuresMoreThan.h" />
     <ClInclude Include="RemoveIf.h" />
     <ClInclude Include="Size.h" />
-    <ClInclude Include="statistics-skeleton.h" />
     <ClInclude Include="statistics.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

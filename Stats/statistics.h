@@ -42,6 +42,7 @@ class Statistics {
 
 		template <typename Pred>
 		void RemoveIf(Pred p);
+	
 		
 		
 		std::map<int, int> OccuresMoreThan(int multiplicity);
@@ -57,5 +58,13 @@ template <typename T>
 Statistics::Statistics( T const* b, T const* e ) : data(e-b) {
     std::copy( b, e, data.begin() ); // we can use regular pointers to specify ranges!
 }
+
+
+template <typename Pred>
+void Statistics::RemoveIf(Pred p)
+{
+	data.erase(std::remove_if(data.begin(), data.end(), p), data.end());
+}
+
 
 #endif

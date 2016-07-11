@@ -54,11 +54,7 @@ int Statistics::Size()
 	
 	//return o.getSize();
 }
-template <typename Pred>
-void Statistics::RemoveIf(Pred p)
-{
-	data.erase(std::remove_if(data.begin(), data.end(), p), data.end());
-}
+
 
 std::map<int, int> Statistics::OccuresMoreThan(int multiplicity)
 {
@@ -72,6 +68,7 @@ std::map<int, int> Statistics::OccuresMoreThan(int multiplicity)
 
 std::vector<int> Statistics::Histogram(int numBins, int upper, int lower)
 {
+	return std::for_each(data.begin(), data.end(), class Histogram(upper, lower, numBins)).getCounts();
 
 }
 

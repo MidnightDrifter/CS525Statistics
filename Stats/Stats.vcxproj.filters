@@ -56,9 +56,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="statistics-skeleton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="driver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -89,11 +86,11 @@
     <ClCompile Include="Histogram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Between.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="statistics-skeleton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="statistics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -119,6 +116,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Histogram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Between.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

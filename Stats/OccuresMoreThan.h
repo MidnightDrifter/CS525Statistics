@@ -13,7 +13,7 @@ public:
 	void setMultiplicity(int x);
 	void trimMap();
 	std::map<int, int> getMap() const;
-	bool isLargerThanMultiplicity(int x) const;
+	//bool isLargerThanMultiplicity(int x) const;
 
 
 private:

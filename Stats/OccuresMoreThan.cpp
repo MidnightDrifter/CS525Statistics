@@ -15,7 +15,7 @@ void OccuresMoreThan::operator() (int x)
 	std::map<int, int>::iterator it = map.find(x);
 	if (it == map.end())
 	{
-		map.insert(std::pair<int, int>(x, 0));
+		map.insert(std::pair<int, int>(x, 1));
 	}
 
 	else
@@ -30,10 +30,18 @@ void OccuresMoreThan::setMultiplicity(int x) { mult = x; }
 
 void OccuresMoreThan::trimMap()
 {
-	for (std::map<int, int>::iterator it = map.begin(); it != map.end(); it++)
+	for (std::map<int, int>::iterator it = map.begin(); it != map.end();)
 	{
-		if ((*it).second < mult) {
+		if ((*it).second <= mult) {
+			std::map<int, int>::iterator temp = it;
+			temp++;
 			map.erase(it);
+			it = temp;
+		}
+
+		else
+		{
+			it++;
 		}
 
 	}

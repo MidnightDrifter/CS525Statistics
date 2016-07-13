@@ -8,7 +8,7 @@ Histogram::Histogram() : upper(-1), lower(-1), numBins(-1), counts()
 
 Histogram::Histogram(const Histogram& h) : upper(h.upper), lower(h.lower), numBins(h.numBins), counts(h.counts){}
 
-Histogram::Histogram(int u, int l, int n) : upper(u), lower(l), numBins(n), counts(std::vector<int>(numBins,0))
+Histogram::Histogram(int l, int u, int n) : lower(l), upper(u), numBins(n), counts(std::vector<int>(numBins,0))
 {
 
 }

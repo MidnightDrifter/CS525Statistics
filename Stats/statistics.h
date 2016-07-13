@@ -18,12 +18,12 @@
 
 
 
-class OccuresMoreThan
+class OccuresMoreThan1
 {
 public:
-	OccuresMoreThan();
-	OccuresMoreThan(const OccuresMoreThan& o);
-	~OccuresMoreThan();
+	OccuresMoreThan1();
+	OccuresMoreThan1(const OccuresMoreThan1& o);
+	~OccuresMoreThan1();
 
 	void operator() (int x);
 	void setMultiplicity(int x);
@@ -39,14 +39,14 @@ private:
 };
 
 
-class Histogram
+class Histogram1
 {
 public:
-	Histogram();
-	Histogram(const Histogram& h);
-	Histogram(int u, int l, int n);
-	const Histogram& operator=(const Histogram& h);
-	~Histogram();
+	Histogram1();
+	Histogram1(const Histogram1& h);
+	Histogram1(int u, int l, int n);
+	const Histogram1& operator=(const Histogram1& h);
+	~Histogram1();
 
 	std::vector<int> getCounts() const;
 
@@ -59,17 +59,18 @@ public:
 private:
 	int upper;
 	int lower;
+	
 	int numBins;
 	std::vector<int> counts;
 };
 
-class Size
+class Size1
 {
 public:
-	Size();
-	~Size();
+	Size1();
+	~Size1();
 
-	int getSize() const;
+	int getSize1() const;
 	void operator() (int x);
 
 private:
@@ -78,11 +79,11 @@ private:
 };
 
 
-class Minimum
+class Minimum1
 {
 public:
-	Minimum();
-	~Minimum();
+	Minimum1();
+	~Minimum1();
 
 	int getMin() const;
 	void operator() (int x);
@@ -93,11 +94,11 @@ private:
 
 
 
-class Maximum
+class Maximum1
 {
 public:
-	Maximum();
-	~Maximum();
+	Maximum1();
+	~Maximum1();
 
 	void operator() (const int x);
 	int getMax() const;
@@ -108,14 +109,14 @@ private:
 };
 
 
-class Average
+class Average1
 {
 public:
-	Average();
-	~Average();
+	Average1();
+	~Average1();
 
 	void operator() (const int x);
-	float getAverage() const;
+	float getAverage1() const;
 	float getSum() const;
 	int getSize() const;
 private:
@@ -125,29 +126,29 @@ private:
 
 
 
-class Deviation
+class Deviation1
 {
 
 	/*
-	Deviation() - standard deviation is a measure of how much the data is
+	Deviation1() - standard Deviation1 is a measure of how much the data is
 	dispersed from the average.
-	formula Deviation( x_1, ... , x_n ) = sqrt ( 1/n * sum ( x_i -a )^2 )
+	formula Deviation1( x_1, ... , x_n ) = sqrt ( 1/n * sum ( x_i -a )^2 )
 	Where 'a' is the Average.
-	Basically deviation is an average of the squares of the distances to the average.
+	Basically Deviation1 is an average of the squares of the distances to the average.
 
 	*/
 public:
-	Deviation();
-	Deviation(const Deviation& d);
-	const Deviation& operator=(const Deviation& d);
-	void setAverage(Average a);
-	~Deviation();
+	Deviation1();
+	Deviation1(const Deviation1& d);
+	const Deviation1& operator=(const Deviation1& d);
+	void setAverage(Average1 a);
+	~Deviation1();
 
 	void operator() (int x);
 	float getDev() const;
 
 private:
-	Average avg;
+	Average1 avg;
 	float sumSquares;
 	//float dev;
 
@@ -161,14 +162,14 @@ class Statistics {
     private:
         typedef std::vector<int> ContainerType;
         ContainerType data;
-		Average avg;
-		Size size;
-		Maximum max;
-		Minimum min;
-		Deviation dev;
-		Histogram hist;
-		OccuresMoreThan omt;
-		RemoveIf removeIf;
+		Average1 avg;
+		Size1 size;
+		Maximum1 max;
+		Minimum1 min;
+		Deviation1 dev;
+		Histogram1 hist;
+		OccuresMoreThan1 omt;
+		//RemoveIf removeIf;
     public:
         Statistics();
         template <typename T> Statistics( T const* b, T const* e );
@@ -190,13 +191,13 @@ class Statistics {
 		std::vector<int> Histogram(int numBins, int lower, int upper);
 
 		//Extra credit
-		void DrawHistogramH(int a, int b, int c) {}
-		void DrawHistogramV(int a, int b, int c) {}
+		void DrawHistogramH(int , int , int ) {}
+		void DrawHistogramV(int , int , int ) {}
 
 };
 
 template <typename T>
-Statistics::Statistics( T const* b, T const* e ) : data(e-b) {
+Statistics::Statistics( T const* b, T const* e ) :   data(e-b), avg(), size(), max(), min(), dev(), hist(), omt() {
     std::copy( b, e, data.begin() ); // we can use regular pointers to specify ranges!
 }
 

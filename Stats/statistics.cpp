@@ -5,7 +5,7 @@
 #include <iomanip> //setfill setw
 #include <iostream> //cout
 
-Statistics::Statistics() : data(), avg(), size(), omt(), max(), min(), dev(), hist(), removeIf() {}
+Statistics::Statistics() : data(), avg(), size(), max(), min(), dev(), hist(), omt()  {}
 
 std::ostream& operator<<( std::ostream& out, Statistics const& stat ) {
     std::copy( stat.data.begin(),  stat.data.end(),
@@ -24,7 +24,7 @@ std::istream& operator>>( std::istream& in, Statistics & stat ) {
 
 float Statistics::Average()
 {
-	return std::for_each(data.begin(), data.end(), avg).getAverage();
+	return std::for_each(data.begin(), data.end(), avg).getAverage1();
 }
 
 float Statistics::Deviation()
@@ -48,9 +48,9 @@ int Statistics::Minimum()
 int Statistics::Size()
 {
 	//return data.size();
-	//class Size o = std::for_each(data.begin, data.end, size);
+	// Size o = std::for_each(data.begin, data.end, size);
 	
-	return std::for_each(data.begin(), data.end(), size).getSize();
+	return std::for_each(data.begin(), data.end(), size).getSize1();
 	
 	//return o.getSize();
 }
@@ -60,15 +60,15 @@ std::map<int, int> Statistics::OccuresMoreThan(int multiplicity)
 {
 
 	omt.setMultiplicity(multiplicity);
-	//class OccuresMoreThan;// o = OccuresMoreThan::OccuresMoreThan();
-	class OccuresMoreThan o = std::for_each(data.begin(), data.end(), omt);
+	// OccuresMoreThan;// o = OccuresMoreThan::OccuresMoreThan();
+	 OccuresMoreThan1 o = std::for_each(data.begin(), data.end(), omt);
 	o.trimMap();
 	return o.getMap();
 }
 
 std::vector<int> Statistics::Histogram(int numBins, int upper, int lower)
 {
-	return std::for_each(data.begin(), data.end(), class Histogram(upper, lower, numBins)).getCounts();
+	return std::for_each(data.begin(), data.end(),  Histogram1(upper, lower, numBins)).getCounts();
 
 }
 
@@ -76,33 +76,33 @@ std::vector<int> Statistics::Histogram(int numBins, int upper, int lower)
 
 
 
-Average::Average() : sum(0.f), size(0)
+Average1::Average1() : sum(0.f), size(0)
 {
 }
 
 
-float Average::getAverage() const
+float Average1::getAverage1() const
 {
 	return sum / size;
 }
 
-float Average::getSum() const
+float Average1::getSum() const
 {
 	return sum;
 }
 
-int Average::getSize() const
+int Average1::getSize() const
 {
 	return size;
 }
 
-void Average::operator() (const int x)
+void Average1::operator() (const int x)
 {
 	sum += x;
 	++size;
 }
 
-Average::~Average()
+Average1::~Average1()
 {
 }
 
@@ -111,16 +111,16 @@ Average::~Average()
 
 
 
-Deviation::Deviation() : avg(), sumSquares(0.f)
+Deviation1::Deviation1() : avg(), sumSquares(0.f)
 {
 }
 
-void Deviation::setAverage(Average a)
+void Deviation1::setAverage(Average1 a)
 {
 	avg = a;
 }
 
-const Deviation& Deviation::operator=(const Deviation& d)
+const Deviation1& Deviation1::operator=(const Deviation1& d)
 {
 	if (this != &d)
 	{
@@ -130,20 +130,20 @@ const Deviation& Deviation::operator=(const Deviation& d)
 	return *this;
 }
 
-Deviation::Deviation(const Deviation& d) : avg(d.avg), sumSquares(d.sumSquares) {}
+Deviation1::Deviation1(const Deviation1& d) : avg(d.avg), sumSquares(d.sumSquares) {}
 
-void Deviation::operator() (int x)
+void Deviation1::operator() (int x)
 {
-	sumSquares += powf(x - avg.getAverage(), 2);
+	sumSquares += powf(x - avg.getAverage1(), 2);
 }
 
-float Deviation::getDev() const
+float Deviation1::getDev() const
 {
 	return sqrtf((1.f / avg.getSize()) * sumSquares);
 }
 
 
-Deviation::~Deviation()
+Deviation1::~Deviation1()
 {
 }
 
@@ -155,23 +155,23 @@ Deviation::~Deviation()
 
 
 
-Histogram::Histogram() : upper(-1), lower(-1), numBins(-1), counts()
+Histogram1::Histogram1() : upper(-1), lower(-1), numBins(-1), counts()
 {
 }
 
-Histogram::Histogram(const Histogram& h) : upper(h.upper), lower(h.lower), numBins(h.numBins), counts(h.counts) {}
+Histogram1::Histogram1(const Histogram1& h) : upper(h.upper), lower(h.lower), numBins(h.numBins), counts(h.counts) {}
 
-Histogram::Histogram(int l, int u, int n) : lower(l), upper(u), numBins(n), counts(std::vector<int>(numBins, 0))
+Histogram1::Histogram1(int l, int u, int n) : upper(u), lower(l), numBins(n), counts(std::vector<int>(numBins, 0))
 {
 
 }
 
-std::vector<int> Histogram::getCounts() const
+std::vector<int> Histogram1::getCounts() const
 {
 	return counts;
 }
 
-const Histogram& Histogram::operator=(const Histogram& h)
+const Histogram1& Histogram1::operator=(const Histogram1& h)
 {
 	if (this != &h)
 	{
@@ -184,28 +184,40 @@ const Histogram& Histogram::operator=(const Histogram& h)
 }
 
 
-void Histogram::operator() (int x)
+void Histogram1::operator() (int x)
 {
-	int curLowerBound = lower;
-	//Size of bins:  ceiling(upper - lower / numBins) 
-	int bSize = (int)(ceil(float(upper - lower) / numBins));
-	int curUpperBound = curLowerBound + bSize;
-	//Between b(upper, lower);
 
-	for (int i = 0; i < counts.size(); i++)
-	{
-		if (x >= curLowerBound && x < curUpperBound)
-		{
-			counts[i]++;
-			break;
-		}
 
-		curLowerBound = curUpperBound;
-		curUpperBound += bSize;
-	}
+
+	counts[(x-lower)*numBins / (upper-lower)]++;
+
+	//int curLowerBound = lower;
+	////Size of bins:  ceiling(upper - lower / numBins) 
+	//int bSize = (upper - lower) / numBins;// = static_cast<int>(ceil(float(upper - lower) / numBins));
+
+	//if ((upper - lower) % numBins != 0)
+	//{
+	//	bSize++;
+	//}
+
+
+	//int curUpperBound = curLowerBound + bSize;
+	////Between b(upper, lower);
+
+	//for (unsigned int i = 0; i < counts.size(); i++)
+	//{
+	//	if (x >= curLowerBound && x < curUpperBound)
+	//	{
+	//		counts[i]++;
+	//		break;
+	//	}
+
+	//	curLowerBound = curUpperBound;
+	//	curUpperBound += bSize;
+	//}
 }
 
-Histogram::~Histogram()
+Histogram1::~Histogram1()
 {
 }
 
@@ -216,13 +228,13 @@ Histogram::~Histogram()
 
 
 
-Maximum::Maximum() : max(std::numeric_limits<int>::min())
+Maximum1::Maximum1() : max(std::numeric_limits<int>::min())
 {
 }
 
-int Maximum::getMax() const { return max; }
+int Maximum1::getMax() const { return max; }
 
-void Maximum::operator() (const int x)
+void Maximum1::operator() (const int x)
 {
 	if (x>max)
 	{
@@ -231,7 +243,7 @@ void Maximum::operator() (const int x)
 }
 
 
-Maximum::~Maximum()
+Maximum1::~Maximum1()
 {
 }
 
@@ -241,13 +253,13 @@ Maximum::~Maximum()
 
 
 
-Minimum::Minimum() : min(std::numeric_limits<int>::max())
+Minimum1::Minimum1() : min(std::numeric_limits<int>::max())
 {
 }
 
 
-int Minimum::getMin() const { return min; }
-void Minimum::operator() (int x)
+int Minimum1::getMin() const { return min; }
+void Minimum1::operator() (int x)
 {
 	if (x<min)
 	{
@@ -255,7 +267,7 @@ void Minimum::operator() (int x)
 	}
 }
 
-Minimum::~Minimum()
+Minimum1::~Minimum1()
 {
 }
 
@@ -266,14 +278,14 @@ Minimum::~Minimum()
 
 
 
-OccuresMoreThan::OccuresMoreThan()
+OccuresMoreThan1::OccuresMoreThan1() : mult(-1), map()
 {
 }
 
 
-OccuresMoreThan::OccuresMoreThan(const OccuresMoreThan& c) : mult(c.mult), map() { map.insert(c.map.begin(), c.map.end()); }
+OccuresMoreThan1::OccuresMoreThan1(const OccuresMoreThan1& c) : mult(c.mult), map() { map.insert(c.map.begin(), c.map.end()); }
 
-void OccuresMoreThan::operator() (int x)
+void OccuresMoreThan1::operator() (int x)
 {
 	std::map<int, int>::iterator it = map.find(x);
 	if (it == map.end())
@@ -289,9 +301,9 @@ void OccuresMoreThan::operator() (int x)
 
 }
 
-void OccuresMoreThan::setMultiplicity(int x) { mult = x; }
+void OccuresMoreThan1::setMultiplicity(int x) { mult = x; }
 
-void OccuresMoreThan::trimMap()
+void OccuresMoreThan1::trimMap()
 {
 	for (std::map<int, int>::iterator it = map.begin(); it != map.end();)
 	{
@@ -309,10 +321,10 @@ void OccuresMoreThan::trimMap()
 
 	}
 }
-std::map<int, int> OccuresMoreThan::getMap() const { return map; }
+std::map<int, int> OccuresMoreThan1::getMap() const { return map; }
 
 
-OccuresMoreThan::~OccuresMoreThan()
+OccuresMoreThan1::~OccuresMoreThan1()
 {
 }
 
@@ -322,16 +334,16 @@ OccuresMoreThan::~OccuresMoreThan()
 
 
 
-Size::Size() : size(0)
+Size1::Size1() : size(0)
 {
 }
 
-int Size::getSize() const { return size; }
+int Size1::getSize1() const { return size; }
 
-void Size::operator() (int x) { ++size; }
+void Size1::operator() (int ) { ++size; }
 
 
-Size::~Size()
+Size1::~Size1()
 {
 }
 

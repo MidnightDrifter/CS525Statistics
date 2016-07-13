@@ -56,69 +56,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="driver.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="statistics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Average.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Maximum.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Minimum.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Size.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Deviation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="OccuresMoreThan.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RemoveIf.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Histogram.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Between.cpp">
+    <ClCompile Include="driver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="statistics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Average.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Maximum.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Minimum.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Size.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Deviation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OccuresMoreThan.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RemoveIf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Histogram.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Between.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
